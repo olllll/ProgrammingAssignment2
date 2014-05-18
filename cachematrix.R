@@ -11,8 +11,6 @@ makeCacheMatrix <- function(x = matrix()) {
     ##x$ncol<<-y$ncol
     x<<-y ##x takes y
     inv<<-NULL
-    ##configura la matrix
-    ##y eso... ¿como lo hago exactamente?
   }
   getMatrix<-function() x
 ##  setInverse<-function(inverse) inv<<-inverse##solve(x)
