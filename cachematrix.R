@@ -1,23 +1,24 @@
 ##we want to be able to avoid computing the inverse of a matrix more than once
 ##for that purpose, instead of using solve() directly, we create a set of two functions:
-##one that, when called, can store the inverse of that particular matrix 
+##one that, when called, creates a list that stores a particular matrix and its inverse 
 ##and another that, when called, returns the inverse of the matrix
 
 
 ##This function takes a matrix as argument and returns a list to a series of 
 ##functions which "contain"//"guard the access to" the original matrix and its inverse 
-##if the inverse doesn't exist, its value is NULL
+
 makeCacheMatrix <- function(x = matrix()) {
-  ##we begin setting inv to NULL
+  ##inv is the variable that holds the inverse of the matrix. When we call makeCacheMatrix, it is set to NULL by default
   inv <- NULL
-  ##this function is meant to determine the values of the matrix
+  ##this function is meant to establish the values of the matrix. 
+  ##If we had a previous matrix stored, it rewrites its parameters and clears the value for the inverse
   set <-function(y){
     x<<-y ##in all contexts, x gets y
-    inv<<-NULL ##in all contents, inv gets null
+    inv<<-NULL ##if we had a previous matrix stored, this ensures that the inv variable is resetted when we define the new matrix
   }
-  get<-function() x ##this function returns the original matrix
-  setInverse<-function(inverse) inv<<-inverse ##this function "stores" the inverse
-  getInverse<-function() inv ##this function returns the inverse
+  get<-function() x ##when called, this function returns the original matrix
+  setInverse<-function(inverse) inv<<-inverse ##this function "stores" the inverse, as received from the outside parameter "inverse"
+  getInverse<-function() inv ##when called, this function returns the inverse
 
 ##return the list of functions that hold the matrix and its inverse
 list(set = set,
