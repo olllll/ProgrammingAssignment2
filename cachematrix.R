@@ -8,16 +8,21 @@
 ##functions which "contain"//"guard the access to" the original matrix and its inverse 
 
 makeCacheMatrix <- function(x = matrix()) {
-  ##inv is the variable that holds the inverse of the matrix. When we call makeCacheMatrix, it is set to NULL by default
+  ##inv is the variable that holds the inverse of the matrix.
+## When we call makeCacheMatrix, it is set to NULL by default
   inv <- NULL
   ##this function is meant to establish the values of the matrix. 
-  ##If we had a previous matrix stored, it rewrites its parameters and clears the value for the inverse
+  ##If we had a previous matrix stored, it rewrites its parameters 
+##and clears the value for the inverse
   set <-function(y){
-    x<<-y ##in all contexts, x gets y
-    inv<<-NULL ##if we had a previous matrix stored, this ensures that the inv variable is resetted when we define the new matrix
+    x<<-y ## x (the matrix we are building) is set to y
+    inv<<-NULL ##if we had a previous matrix stored, 
+		##this ensures that the inv variable 
+		##is resetted when we define the new matrix
   }
   get<-function() x ##when called, this function returns the original matrix
-  setInverse<-function(inverse) inv<<-inverse ##this function "stores" the inverse, as received from the outside parameter "inverse"
+  setInverse<-function(inverse) inv<<-inverse ##this function "stores" the inverse, 
+						##as received from the outside parameter "inverse"
   getInverse<-function() inv ##when called, this function returns the inverse
 
 ##return the list of functions that hold the matrix and its inverse
@@ -31,7 +36,8 @@ list(set = set,
 
 ## This function takes a list of functions as argument
 ##the function attempts to fetch the getInverse() function of the list
-##if it succeeds, it means that the inverse of the matrix has been solved before and just returns the value
+##if it succeeds, it means that the inverse of the matrix has been solved before 
+  ##and just returns the value
 ##if it fails, it means that the matrix has not been solved before, so 
   ##it computes the inverse, and returns it (after storing it)
 
