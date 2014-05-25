@@ -5,7 +5,7 @@
 
 
 ##This function takes a matrix as argument and returns a list to a series of 
-##functions which "contain"//"guard the access to" the original matrix and its inverse 
+##functions which guard the access to the original matrix and its inverse 
 
 makeCacheMatrix <- function(x = matrix()) {
   ##inv is the variable that holds the inverse of the matrix.
@@ -49,8 +49,8 @@ cacheSolve <- function(x, ...) {
     return(inverse) ##and leave the function
   }
   ##if we're still here, we have work to do
-  mat<-x$get() ##we take x through get() and assign it to mat
+  mat<-x$get() ##we take the 'matrix value' of x through get() and assign it to mat
   inverse<- solve(mat, ...) ##we solve mat (plus the extra args) and assign to inv
   x$setInverse(inverse) ##we store the inverse in the cache in case we need to compute it again 
-  inverse ##we return the inverse
+  inverse ##return the inverse
 }
