@@ -12,10 +12,10 @@ The assignment uses the '<<-' operator as a way to assign the values of the spec
 
 ### Caching the Inverse of a Matrix
 
-The code contained in the file "cachematrix.R" consists of two functions:
-1.  'makeCacheMatrix' is a function that creates a special "matrix" object
+The code contained in the file "cachematrix.R" consists of two functions
+* 'makeCacheMatrix' is a function that creates a special "matrix" object
     that can cache its inverse.
-2.  'cacheSolve' is a function that computes the inverse of the special
+    * 'cacheSolve' is a function that computes the inverse of the special
     "matrix" returned by 'makeCacheMatrix' above. If the inverse has
     already been calculated (and the matrix has not changed), then
     'cacheSolve' retrieves the inverse from the cache.
